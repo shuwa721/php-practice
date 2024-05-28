@@ -1,103 +1,59 @@
-## Q1
-* for($i=1;$i<=100;$i++){
-    if($i%4==0 && $i%5==0){
-      echo "tic-tac \n";
-    }
-    elseif($i%5==0){
-      echo "tac \n";
-    }
-    elseif($i%4==0){
-      echo "tic\n";
-      
-    }
-    else{
-      echo $i . "\n";
-    }
-  }
+# PHP練習問題② 説明
 
-## Q2
-**問1**
-* $personalInfos = [
-    [
-        'name' => 'Aさん',
-        'mail' => 'aaa@mail.com',
-        'tel'  => '09011112222'
-    ],
-    [
-        'name' => 'Bさん',
-        'mail' => 'bbb@mail.com',
-        'tel'  => '08033334444'
-    ],
-    [
-        'name' => 'Cさん',
-        'mail' => 'ccc@mail.com',
-        'tel'  => '09055556666'
-    ],
-  ];
-* echo $personalInfos[1]['name']."の電話番号は".$personalInfos[1]['tel']."です。\n";
+## 下記for文の`$i = 0`, `$i <= 4`, `$i++`, `echo $i`がそれぞれ、どの順番で処理されるか、また、何をしているのかを説明してください。
 
-**問2**
-* foreach($personalInfos as $key=>$value){
-    $num=$key+1;
-    echo $num. "番目の" .$personalInfos[$key]['name']. "のメールアドレスは" .$personalInfos[$key]['mail'].
-    "で、電話番号は".$personalInfos[$key]['tel']."です。\n";
-  }
-**問3**
-* $ageList = [25, 30, 18];
-* foreach($personalInfos as $key=>$value){
-    $personalInfos[$key]=$personalInfos[$key]+array("age"=>$ageList[$key]);
-    
-  }
-* var_dump($personalInfos);
-## Q3
-* class Student
-  {
-      public $studentId;
-      public $studentName;
-  
-      public function __construct($id, $name)
-      {
-          $this->studentId = $id;
-          $this->studentName = $name;
-      }
-  
-      public function attend()
-      {
-          echo '授業に出席しました。';
-      }
-  }
-* $stu=new Student(120,'山田');
-* echo "学籍番号" .$stu->studentId. "番の生徒は" .$stu->studentName. "です。\n";
+```
+for ($i = 0; $i <= 4; $i++) {
+    echo $i;
+}
+```
 
-## Q4
-* class Student
-  {
-      public $studentId;
-      public $studentName;
-  
-      public function __construct($id, $name)
-      {
-          $this->studentId = $id;
-          $this->studentName = $name;
-      }
-  
-      public function attend($subject)
-      {
-        $this->studentsubject=$subject;
-        echo $this->studentName. 'は' .$this->studentsubject. 'の授業に出席しました。学籍番号：' .$this->studentId. "\n";
-      }
-  }
-* $yamada->attend('PHP');
+1. 最初に処理される。for文の変数の初期値を宣言している
+2. 2番目に実行される。for文内の処理を最大繰り返す数を宣言している
+3. 4番目に実行される。for文の変数iを1増やしている
+4. 3番目に実行される。for文の変数iの値を出力している。
 
-## Q5
-**問1**
-* $date=new DateTime();
-* $date->sub(new DateInterval('P1M'));
-* echo $date->format("Y-m-d\n");
+## for文とforeachはどのように使い分けるのか説明してください。
+- 基本的に、繰り返し処理を実行したい場合は、for文を使い、配列のデータを扱うときにforeachを使う。
 
-**問2**
-* $time = new DateTime('1992-04-25');
-* $diff = $date->diff($time);
-* echo $diff->format('あの日から%a日経過しました。');
+## クラスとインスタンスの違いについて説明してください。
+- クラス：オブジェクトをデザインする役割があり、オブジェクトの元になる型枠(フレームワーク)。(例:class User{})
 
+- インスタンス:あるクラス型のオブジェクトの実例（実体）。new演算子を使って生成される。(例:$bob = new User())
 
+## プロパティとメソッドとはなにか説明してください。
+- プロパティ:オブジェクト指向プログラミングにおけるオブジェクトの属性や状態を表す要素です。(例: クラス内でpublic $name と宣言)
+- メソッド:オブジェクトの振る舞いを定義するプログラムの一部であり、オブジェクトのプロパティに対する操作を行います。
+(例:クラス内で$public function sayHi())
+## コンストラクタとはなにか、また、なぜ必要なのかを説明してください。
+- 特殊なメソッドの一つです。通常のメソッドは呼び出して実行しますが、コンストラクタはクラスをインスタンス化する際に実行されます。
+「クラス」のメンバ変数を初期化する際に使うのが主な使われ方です。(例:__construct($id, $name))
+## 下記コンストラクター内の2行が何をしているのか、また、なぜこの2行が必要なのか説明してください。
+```
+public function __construct($id, $name)
+{
+    $this->studentId = $id;
+    $this->studentName = $name;
+}
+```
+- コンストラクタ内の$idと$nameを初期化している。新しいオブジェクトが適切な初期状態で始まることを保証するために必要とされます。
+
+## クラスがなぜ必要なのか説明してください。
+- クラスを作ることで『一度作成したプログラムを再利用』でき、同じコードを繰り返す必要がなくなるので作業が効率的になります。
+また、クラスは『既存のクラスを元に新しいクラスを作成』することもできます。
+
+## `DateTime::modify`メソッドの返り値を教えてください。
+- 変更されたタイムスタンプを返す。(例:$date = new DateTime('2006-12-12');$date->modify('+1 day');echo $date->format('Y-m-d');このように記載したら'2006-12-13'と返す)
+
+## `DateTime::format`メソッドと`DateInterval::format`メソッドの違いを教えてください。
+- DateTime::format:日付や時間を扱うための標準的なオブジェクトです。
+- DateInterval::format:2つの日付の間の時間差を表すオブジェクトです。
+
+## 下記コード3行目のformatメソッドの返り値をPHPのマニュアルから調べる手順を具体的に説明してください。
+```
+$now = new DateTime();
+$prev = new DateTime('2000-1-1');
+echo $prev->diff($now)->format('%a')
+```
+
+- 現在の時間と指定した時間の差を調べた後トータル時間を総日数変換する。
