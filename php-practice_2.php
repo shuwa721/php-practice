@@ -1,15 +1,18 @@
 <?php
 // Q1 tic-tac問題
-for($i=1;$i<=100;$i++){
-  if($i%4==0 && $i%5==0){
+for($i = 1;$i <= 100;$i ++)
+{
+  if($i%4 == 0 && $i%5 == 0 )
+  {
     echo "tic-tac \n";
   }
-  elseif($i%5==0){
+  elseif($i%5 == 0)
+  {
     echo "tac \n";
   }
-  elseif($i%4==0){
+  elseif($i%4 == 0)
+  {
     echo "tic\n";
-    
   }
   else{
     echo $i . "\n";
@@ -36,25 +39,20 @@ $personalInfos = [
 ];
 echo $personalInfos[1]['name']."の電話番号は".$personalInfos[1]['tel']."です。\n";
 
-foreach($personalInfos as $Key=>$Value){
-  $Num=$Key+1;
-  echo $Num. "番目の" .$personalInfos[$Key]['name']. "のメールアドレスは" .$personalInfos[$Key]['mail'].
-  "で、電話番号は".$personalInfos[$Key]['tel']."です。\n";
+foreach($personalInfos as $key => $value)
+{
+  $num = $Key+1;
+  echo $num. "番目の" .$personalInfos[$key]['name']. "のメールアドレスは" .$personalInfos[$key]['mail'].
+  "で、電話番号は".$personalInfos[$key]['tel']."です。\n";
 }
 
-$AgeList = [25, 30, 18];
-foreach($personalInfos as $Key=>$Value){
-  $personalInfos[$Key]=$personalInfos[$Key]+array("age"=>$AgeList[$Key]);
-    
+$ageList = [25, 30, 18];
+foreach($personalInfos as $key => $value)
+{
+  $personalInfos[$key] = $personalInfos[$key]+array("age" => $ageList[$key]);
 }
 
 // Q3 オブジェクト-1
-
-$Stu=new Student(120,'山田');
-echo "学籍番号" .$Stu->studentId. "番の生徒は" .$Stu->studentName. "です。\n";
-// Q4 オブジェクト-2
-$yamada= new Student(120, '山田');
-$yamada->attend('PHP');
 
 class Student
 {
@@ -73,13 +71,23 @@ class Student
     }
 }
 
+$stu = new Student(120, '山田');
+echo "学籍番号" .$stu->studentId. "番の生徒は" .$stu->studentName. "です。\n";
+// Q4 オブジェクト-2
+$yamada = new Student(120, '山田');
+$yamada->attend('PHP');
+
+
+
 // Q5 定義済みクラス
-$Date=new DateTime();
-$Date->sub(new DateInterval('P1M'));
-echo $Date->format("Y-m-d\n");
+$date = new DateTime();
+$date->sub(new DateInterval('P1M'));
+echo $date->format("Y-m-d\n");
 
 
-$Time = new DateTime('1992-04-25');
-$Diff = $Date->diff($Time);
-echo $Diff->format('あの日から%a日経過しました。');
+$date_Before = new DateTime('1992-04-25');
+#$Time = new DateTime('1992-04-25');
+#$Date = new DateTime('1992-04-25');
+echo $date_Before->diff($date)->format('あの日から%a日経過しました。');
+
 ?>
