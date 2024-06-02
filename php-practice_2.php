@@ -41,7 +41,7 @@ echo $personalInfos[1]['name']."の電話番号は".$personalInfos[1]['tel']."�
 
 foreach($personalInfos as $key => $value)
 {
-  $num = $Key+1;
+  $num = $key+1;
   echo $num. "番目の" .$personalInfos[$key]['name']. "のメールアドレスは" .$personalInfos[$key]['mail'].
   "で、電話番号は".$personalInfos[$key]['tel']."です。\n";
 }
@@ -65,9 +65,9 @@ class Student
         $this->studentName = $name;
     }
 
-    public function attend($Subject)
+    public function attend($subject)
     {
-      echo $this->studentName. 'は' .$Subject. 'の授業に出席しました。学籍番号：' .$this->studentId. "\n";
+      echo $this->studentName. 'は' .$subject. 'の授業に出席しました。学籍番号：' .$this->studentId. "\n";
     }
 }
 

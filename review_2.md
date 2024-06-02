@@ -43,7 +43,7 @@ public function __construct($id, $name)
 また、クラスは『既存のクラスを元に新しいクラスを作成』することもできます。
 
 ## `DateTime::modify`メソッドの返り値を教えてください。
-- 変更されたタイムスタンプを返す。(例:$date = new DateTime('2006-12-12');$date->modify('+1 day');echo $date->format('Y-m-d');このように記載したら'2006-12-13'と返す)
+- タイムスタンプを変更する。変更されたDateTimeオブジェクトを返す。(例:$date = new DateTime('2006-12-12');$date->modify('+1 day');echo $date->format('Y-m-d');このように記載したら'2006-12-13'と返す)
 
 ## `DateTime::format`メソッドと`DateInterval::format`メソッドの違いを教えてください。
 - DateTime::format:日付や時間を扱うための標準的なオブジェクトです。
@@ -56,4 +56,5 @@ $prev = new DateTime('2000-1-1');
 echo $prev->diff($now)->format('%a')
 ```
 
-- 最初はprev->diff($now)で現在の時間と指定した時間の差を調べて次にformat('%a')にアクセスしてトータル時間を総日数変換する。
+- 最初はprev->diff($now)で現在の時間と指定した時間の差を調べて次にformat('%a')にアクセスしてトータル時間を総日数変換し、
+　変更した後指定した書式でフォーマットした日付を返す。成功した場合にフォーマット済みの日付文字列を返します。
